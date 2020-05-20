@@ -1,5 +1,4 @@
 import React from 'react';
-<<<<<<< HEAD
 import { makeStyles } from '@material-ui/core/styles'
 import {Card, 
         CardActionArea,
@@ -10,9 +9,7 @@ import {Card,
         Typography } from '@material-ui/core';
 
 
-=======
 import { importPets, getNewPet, reviewPet } from './store/actions.js';
->>>>>>> 57e6c393bf302fd8c125916dd2781ec357decfea
 
 export default function Main() {
 
