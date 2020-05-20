@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import initPets from "./store/data.json";
+import { importPets } from "./store/actions";
 
 export default function Testing() {
   const dispatch = useDispatch();
@@ -8,9 +9,12 @@ export default function Testing() {
 
   useEffect(() => {
     console.log(initPets[0]);
-    dispatch({ type: "IMPORT_PET", pet: initPets[0] });
-    dispatch({ type: "IMPORT_PET", pet: initPets[1] });
-    dispatch({ type: "IMPORT_PET", pet: initPets[2] });
+
+    dispatch(importPets(initPets));
+
+    // dispatch({ type: "IMPORT_PET", pet: initPets[0] });
+    // dispatch({ type: "IMPORT_PET", pet: initPets[1] });
+    // dispatch({ type: "IMPORT_PET", pet: initPets[2] });
   }, [dispatch]);
 
   if (!pets) {
@@ -22,7 +26,7 @@ export default function Testing() {
         {pets.map((pet) => (
           <div>
             {pet.name} {pet.pending ? "pending" : "stored"}{" "}
-            {pet.like ? "like" : ""}
+            {pet.like ? "like" : pet.like === false ? "dislike" : ""}
           </div>
         ))}
         <button onClick={() => dispatch({ type: "NEW_PENDING" })}>
