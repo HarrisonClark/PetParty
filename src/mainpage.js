@@ -1,4 +1,5 @@
 import React from 'react';
+import { importPets, getNewPet, reviewPet } from './store/actions.js';
 
 export default function Main() {
     return (
