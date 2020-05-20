@@ -41,9 +41,11 @@ export default function PetCard() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(importPets(initPets));
-    dispatch(getNewPet());
-  }, [dispatch]);
+    if (pets.length === 0) {
+      dispatch(importPets(initPets));
+      dispatch(getNewPet());
+    }
+  }, [pets, dispatch]);
 
   useEffect(() => {
     setActive(pets.filter((pet) => pet.pending === true)[0]);
