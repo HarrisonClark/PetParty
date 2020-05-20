@@ -1,17 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import {
+  Box,
   Card,
-  CardActionArea,
   CardContent,
-  CardActions,
   CardMedia,
-  Button,
   Typography,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import { importPets, getNewPet, reviewPet } from "./store/actions";
-import initPets from "./store/data.json";
 
 const useStyles = makeStyles({
   root: {
@@ -23,8 +19,9 @@ const useStyles = makeStyles({
   media: {
     height: "200px",
   },
-  card: {
-    "margin-left": "35%",
+  break: {
+    flexBasis: "100%",
+    height: "0",
   },
 });
 
@@ -34,13 +31,6 @@ export default function PetCard() {
 
   const [active, setActive] = useState(null);
 
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(importPets(initPets));
-    dispatch(getNewPet());
-  }, [dispatch]);
-
   useEffect(() => {
     setActive(pets.filter((pet) => pet.like === true));
   }, [pets]);
@@ -49,15 +39,18 @@ export default function PetCard() {
     console.log(active);
     return active.map((active) => (
       <Card className={classes.root}>
-        {/* <CardActionArea> */}
         <CardMedia className={classes.media} image={active.image} />
         <CardContent className={classes.card}>
-          <Typography gutterBottom variant="h5" component="h2">
-            {active.name}
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            Breed: {active.breed}
-          </Typography>
+          <Box display="flex" flexWrap="wrap" justifyContent="center">
+            <Typography gutterBottom variant="h5" component="h2">
+              {active.name}
+            </Typography>
+            <div className={classes.break}></div>
+
+            <Typography variant="body2" color="textSecondary" component="p">
+              Breed: {active.breed}
+            </Typography>
+          </Box>
         </CardContent>
       </Card>
     ));

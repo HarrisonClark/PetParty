@@ -11,6 +11,8 @@ export default function Profile() {
         <Typography style={{ marginTop: "50px" }} variant="h3">
           Dogs You've Liked
         </Typography>
+      </Box>
+      <Box display="flex" flexWrap="wrap" justifyContent="center">
         <MiniPetCard />
       </Box>
     </>

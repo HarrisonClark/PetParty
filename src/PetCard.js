@@ -8,6 +8,7 @@ import {
   CardMedia,
   Button,
   Typography,
+  Box,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { importPets, getNewPet, reviewPet } from "./store/actions";
@@ -22,9 +23,13 @@ const useStyles = makeStyles({
   media: {
     height: "600px",
   },
-  card: {
-    "margin-left": "35%",
+  break: {
+    flexBasis: "100%",
+    height: "0",
   },
+  // card: {
+  //   "margin-left": "35%",
+  // },
 });
 
 export default function PetCard() {
@@ -51,35 +56,45 @@ export default function PetCard() {
         {/* <CardActionArea> */}
         <CardMedia className={classes.media} image={active.image} />
         <CardContent className={classes.card}>
-          <Typography gutterBottom variant="h5" component="h2">
-            {active.name}
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            Breed: {active.breed}
-          </Typography>
+          <Box display="flex" flexWrap="wrap" justifyContent="center">
+            <Typography gutterBottom variant="h5" component="h2">
+              {active.name}
+            </Typography>
+            <div className={classes.break}></div>
+            <Typography variant="body2" color="textSecondary" component="p">
+              Breed: {active.breed}
+            </Typography>
+          </Box>
         </CardContent>
-        {/* </CardActionArea> */}
         <CardActions>
-          <Button
-            onClick={() => {
-              dispatch(reviewPet(true));
-              dispatch(getNewPet());
-            }}
-            size="small"
-            color="primary"
+          <Box
+            width="100%"
+            display="flex"
+            flexWrap="wrap"
+            justifyContent="center"
           >
-            Like
-          </Button>
-          <Button
-            onClick={() => {
-              dispatch(reviewPet(false));
-              dispatch(getNewPet());
-            }}
-            size="small"
-            color="primary"
-          >
-            Dislike
-          </Button>
+            <Button
+              onClick={() => {
+                dispatch(reviewPet(true));
+                dispatch(getNewPet());
+              }}
+              size="small"
+              color="primary"
+            >
+              Like
+            </Button>
+            <div style={{ width: "25px" }} />
+            <Button
+              onClick={() => {
+                dispatch(reviewPet(false));
+                dispatch(getNewPet());
+              }}
+              size="small"
+              color="primary"
+            >
+              Dislike
+            </Button>
+          </Box>
         </CardActions>
       </Card>
     );
