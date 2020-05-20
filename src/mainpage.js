@@ -1,5 +1,5 @@
 import React from "react";
-import Pet from "./Pet";
+import PetCard from "./PetCard";
 import { importPets, getNewPet, reviewPet } from "./store/actions.js";
 
 export default function Main() {
@@ -7,7 +7,7 @@ export default function Main() {
     <>
       <h1>This is our main page</h1>
       <div>
-        <Pet />
+        <PetCard />
       </div>
     </>
   );
