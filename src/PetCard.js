@@ -12,14 +12,16 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 800,
+    marginTop: "50px",
+    width: "40%",
+    height: "90%",
   },
   media: {
-    height: 600,
+    height: "600px",
   },
   card: {
-    'margin-left': '35%',
-  }, 
+    "margin-left": "35%",
+  },
 });
 
 export default function PetCard() {
@@ -32,11 +34,11 @@ export default function PetCard() {
           className={classes.media}
           image="https://images.dog.ceo/breeds/dingo/n02115641_4265.jpg"
         />
-        <CardContent className={classes.card }>
+        <CardContent className={classes.card}>
           <Typography gutterBottom variant="h5" component="h2">
             Dog Name
           </Typography>
-          <Typography  variant="body2" color="textSecondary" component="p">
+          <Typography variant="body2" color="textSecondary" component="p">
             Breed: Dalmatian
           </Typography>
         </CardContent>
