@@ -12,10 +12,10 @@ import { importPets, getNewPet, reviewPet } from './store/actions.js';
 
 const useStyles = makeStyles({
     root: {
-      maxWidth: 345,
+      maxWidth: 500,
     },
     media: {
-      height: 140,
+      height: 400, 
     },
   });
 
