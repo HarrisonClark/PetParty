@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import {
   Card,
   CardActionArea,
@@ -9,43 +10,80 @@ import {
   Typography,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import { importPets, getNewPet, reviewPet } from "./store/actions";
+import initPets from "./store/data.json";
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 900,
+    marginTop: "50px",
+    width: "40%",
+    height: "90%",
   },
   media: {
-    height: 700,
+    height: "600px",
   },
   card: {
-    'margin-left': '35%',
-  }, 
+    "margin-left": "35%",
+  },
 });
 
 export default function PetCard() {
   const classes = useStyles();
-  return (
-    <Card className={classes.root}>
-        <CardMedia
-          className={classes.media}
-          image="https://images.dog.ceo/breeds/dingo/n02115641_4265.jpg"
-        />
-        <CardContent className={classes.card }>
+  const pets = useSelector((state) => state);
+
+  const [active, setActive] = useState(null);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(importPets(initPets));
+    dispatch(getNewPet());
+  }, [dispatch]);
+
+  useEffect(() => {
+    setActive(pets.filter((pet) => pet.pending === true)[0]);
+  }, [pets]);
+
+  if (active) {
+    console.log(active);
+    return (
+      <Card className={classes.root}>
+        {/* <CardActionArea> */}
+        <CardMedia className={classes.media} image={active.image} />
+        <CardContent className={classes.card}>
           <Typography gutterBottom variant="h5" component="h2">
-            Dog Name
+            {active.name}
           </Typography>
-          <Typography  variant="body2" color="textsSecondary" component="p">
-            Breed: Dalmatian
+          <Typography variant="body2" color="textSecondary" component="p">
+            Breed: {active.breed}
           </Typography>
         </CardContent>
-      <CardActions>
-        <Button size="small" color="primary">
-          Like
-        </Button>
-        <Button size="small" color="primary">
-          Dislike
-        </Button>
-      </CardActions>
-    </Card>
-  );
+        {/* </CardActionArea> */}
+        <CardActions>
+          <Button
+            onClick={() => {
+              dispatch(reviewPet(true));
+              dispatch(getNewPet());
+            }}
+            size="small"
+            color="primary"
+          >
+            Like
+          </Button>
+          <Button
+            onClick={() => {
+              dispatch(reviewPet(false));
+              dispatch(getNewPet());
+            }}
+            size="small"
+            color="primary"
+          >
+            Dislike
+          </Button>
+        </CardActions>
+      </Card>
+    );
+  } else {
+    return <h3>Loading</h3>;
+  }
 }
