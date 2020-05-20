@@ -12,10 +12,10 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 800,
+    maxWidth: 900,
   },
   media: {
-    height: 600,
+    height: 700,
   },
   card: {
     'margin-left': '35%',
@@ -24,10 +24,8 @@ const useStyles = makeStyles({
 
 export default function PetCard() {
   const classes = useStyles();
-
   return (
     <Card className={classes.root}>
-      <CardActionArea>
         <CardMedia
           className={classes.media}
           image="https://images.dog.ceo/breeds/dingo/n02115641_4265.jpg"
@@ -36,11 +34,10 @@ export default function PetCard() {
           <Typography gutterBottom variant="h5" component="h2">
             Dog Name
           </Typography>
-          <Typography  variant="body2" color="textSecondary" component="p">
+          <Typography  variant="body2" color="textsSecondary" component="p">
             Breed: Dalmatian
           </Typography>
         </CardContent>
-      </CardActionArea>
       <CardActions>
         <Button size="small" color="primary">
           Like
