@@ -18,9 +18,9 @@ export function getNewPet() {
   };
 }
 
-export function reviewPet(review) {
+export function reviewPet(like) {
   return {
-    type: "NEW_PENDING",
-    review,
+    type: "REVIEW",
+    like,
   };
 }
