@@ -15,6 +15,20 @@ export default function reducer(state = initialState, action) {
         },
       ];
     }
+    case "IMPORT_PETS": {
+      return [
+        ...state,
+        ...action.pets.map((pet) => {
+          return {
+            ...pet,
+            pending: false,
+            reviewed: false,
+            like: null,
+            pk: id++,
+          };
+        }),
+      ];
+    }
     case "NEW_PENDING": {
       let currentPending = state.filter((pets) => pets.pending === true);
       // if there is already a pending pet, do nothing
