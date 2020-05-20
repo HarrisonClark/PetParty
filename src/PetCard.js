@@ -12,10 +12,10 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 700,
+    maxWidth: 800,
   },
   media: {
-    height: 500,
+    height: 600,
   },
   card: {
     'margin-left': '35%',
