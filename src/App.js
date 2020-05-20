@@ -4,6 +4,7 @@ import { Provider } from "react-redux";
 import Testing from "./Testing";
 import reducer from "./store/reducer";
 import Main from "./mainpage";
+import Profile from "./Profile";
 import Pagebar from "./PageBar";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { ThemeProvider } from "@material-ui/core/styles";
@@ -19,6 +20,7 @@ export default function App() {
           <Provider store={store}>
             <Pagebar />
             <Route exact path="/" component={Main} />
+            <Route exact path="/profile" component={Profile} />
             <Route exact path="/testing" component={Testing} />
           </Provider>
         </ThemeProvider>
