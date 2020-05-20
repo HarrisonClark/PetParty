@@ -101,6 +101,17 @@ export default function PetCard() {
       </Card>
     );
   } else {
-    return <h3>Loading</h3>;
+    if (pets.length !== 0) {
+      return (
+        <Typography style={{ marginTop: "25px" }} variant="h3">
+          You've Seen All the Pets
+        </Typography>
+      );
+    }
+    return (
+      <Typography style={{ marginTop: "25px" }} variant="h3">
+        Loading
+      </Typography>
+    );
   }
 }
