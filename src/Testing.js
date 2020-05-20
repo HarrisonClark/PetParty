@@ -5,7 +5,7 @@ export default function Testing() {
   const dispatch = useDispatch();
   const pets = useSelector((state) => state.pets);
 
-  if (pets.length === 0) {
+  if (!pets) {
     return <div></div>;
   } else {
     return (
