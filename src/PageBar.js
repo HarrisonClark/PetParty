@@ -2,6 +2,7 @@ import React from 'react';
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
+import Button from "@material-ui/core/Button";
 
 export default function PageBar() {
     return (
@@ -10,8 +11,8 @@ export default function PageBar() {
                 <Toolbar>
                     <Typography variant="h2" style={{fontFamily: "Lucida Console" }}>PetFiesta</Typography>
                     <sup style={{fontSize: 15}}>©</sup>
-                    <div style={{marginLeft: "auto"}}>My Profile</div>
-                    <div style={{marginLeft: "auto"}}>Home</div>
+                    <Button style={{marginLeft: "auto"}}>My Profile</Button>
+                    <Button style={{marginLeft: "auto"}}>Home</Button>
                 </Toolbar>
             </AppBar>
         </>

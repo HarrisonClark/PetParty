@@ -7,7 +7,6 @@ import {Card,
         CardMedia, 
         Button, 
         Typography } from '@material-ui/core';
-import { importPets, getNewPet, reviewPet } from './store/actions.js';
 import PetCard from "./PetCard";
 import { importPets, getNewPet, reviewPet } from "./store/actions.js";
 
